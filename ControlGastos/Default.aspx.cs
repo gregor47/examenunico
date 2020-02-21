@@ -15,10 +15,32 @@ namespace ExamenUnico
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            refrescarTabla();
-            if (!IsPostBack){
-                
+            String username ="", perfil, nombre;
+            try
+            {
+                username = Request.Cookies["Sesion"].Values.Get("UserName");
+                perfil = Request.Cookies["Sesion"].Values.Get("perfil");
+                nombre = Request.Cookies["Sesion"].Values.Get("nombre");
             }
+            catch (Exception ex)
+            {
+                //si entra es porque no hay sesion activa
+            }
+
+            if (!String.IsNullOrEmpty(username))
+            {
+                refrescarTabla();
+                if (!IsPostBack)
+                {
+
+                }
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
+
+            
             
         }
         protected void Button3_Click(object sender, EventArgs e)
