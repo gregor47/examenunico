@@ -18,7 +18,7 @@
 
 <body class="text-center">
     <!-- Button trigger modal -->
-
+    <div class="container-fluid">
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -70,7 +70,7 @@
         </button>
         <p class="mt-5 mb-3 text-muted">Examen Unico© Universidad Autonoma - 2020</p>
     </form>
-
+</div>
     <script type="text/javascript">
 
         $('#myModal').on('shown.bs.modal', function () {

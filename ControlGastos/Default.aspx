@@ -27,7 +27,6 @@
             
         </div>
     </div>
-    <asp:Button runat="server" id="exportar" text="exportar a excel" OnClick="exportar_Click"/>
     
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" CssClass="table table-striped table-bordered table-hover">
         <Columns>

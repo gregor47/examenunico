@@ -68,34 +68,34 @@ namespace ExamenUnico
             GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
         }
 
-        protected void exportar_Click(object sender, EventArgs e)
-        {
-            Response.Clear();
-            Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment;filename=GridViewExporttoExcel.xls");
-            Response.Charset = "";
-            Response.ContentType = "application/vnd.ms-excel";
-            using (StringWriter sw = new StringWriter())
-            {
-                HtmlTextWriter hw = new HtmlTextWriter(sw);
+        //protected void exportar_Click(object sender, EventArgs e)
+        //{
+        //    Response.Clear();
+        //    Response.Buffer = true;
+        //    Response.AddHeader("content-disposition", "attachment;filename=GridViewExporttoExcel.xls");
+        //    Response.Charset = "";
+        //    Response.ContentType = "application/vnd.ms-excel";
+        //    using (StringWriter sw = new StringWriter())
+        //    {
+        //        HtmlTextWriter hw = new HtmlTextWriter(sw);
 
-                GridView1.AllowPaging = false;
+        //        GridView1.AllowPaging = false;
 
-                GridView1.RenderControl(hw);
+        //        GridView1.RenderControl(hw);
 
 
-                string style = @"<style> .textmode { } </style>";
-                Response.Write(style);
-                Response.Output.Write(sw.ToString());
-                Response.Flush();
-                Response.End();
+        //        string style = @"<style> .textmode { } </style>";
+        //        Response.Write(style);
+        //        Response.Output.Write(sw.ToString());
+        //        Response.Flush();
+        //        Response.End();
 
-            }
-        }
+        //    }
+        //}
 
-        public override void VerifyRenderingInServerForm(Control control)
-        {
-            //verificamos que el control está renderizado
-        }
+        //public override void VerifyRenderingInServerForm(Control control)
+        //{
+        //    //verificamos que el control está renderizado
+        //}
     }
 }
