@@ -43,20 +43,20 @@
 
 
     <form class="form-signin" runat="server">
-        <img class="mb-4" src="https://s.gravatar.com/avatar/d8741d1f353f552bdc17ea094af50b2e?s=80" alt="The Creator" width="72" height="72">
+        <img class="mb-4 rounded-circle" src="img/LogoApp.png" alt="The Creator" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Registro</h1>
         <label for="user" class="sr-only">Usuario</label>
+        <input type="text" id="user" runat="server" class="form-control mb-2" placeholder="Usuario" required autofocus>
         <label for="contraseña" class="sr-only">Contraseña</label>
-        <input type="password" id="contrasena" runat="server" class="form-control" placeholder="Password" required>
+        <input type="password" id="contrasena" runat="server" class="form-control mb-2" placeholder="Password" required>
         <label for="contraseña" class="sr-only">Repetir Contraseña</label>
-        <input type="password" id="Password1" runat="server" class="form-control" placeholder="Repita la Contraseña" required>
-        <input type="text" id="user" runat="server" class="form-control" placeholder="Usuario" required autofocus>
+        <input type="password" id="Password1" runat="server" class="form-control mb-2" placeholder="Repita la Contraseña" required>
         <label for="email" class="sr-only">Correo Electronico</label>
-        <input type="email" id="email" runat="server" class="form-control" placeholder="Correo Electronico" required autofocus>
+        <input type="email" id="email" runat="server" class="form-control mb-2" placeholder="Correo Electronico" required autofocus>
         <label for="direccion" class="sr-only">Direccion</label>
-        <input type="text" id="direccion" runat="server" class="form-control" placeholder="Direccion" required autofocus>
+        <input type="text" id="direccion" runat="server" class="form-control mb-2" placeholder="Direccion" required autofocus>
         <label for="telefono" class="sr-only">Telefono</label>
-        <input type="number" id="telefono" runat="server" class="form-control" placeholder="Telefono" required autofocus>
+        <input type="number" id="telefono" runat="server" class="form-control mb-2" placeholder="Telefono" required autofocus>
         
         <div class="checkbox mb-3">
             <label>

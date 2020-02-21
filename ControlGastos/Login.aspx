@@ -21,9 +21,9 @@
         <img class="mb-4 rounded-circle" src="img/LogoApp.png" alt="The Creator" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesion</h1>
         <label for="inputEmail" class="sr-only">Usuario</label>
-        <input type="text" id="Usuario" runat="server" class="form-control" placeholder="Usuario" required autofocus>
+        <input type="text" id="Usuario" runat="server" class="form-control mb-2" placeholder="Usuario" required autofocus>
         <label for="inputPassword" class="sr-only">Contraseña</label>
-        <input type="password" id="Contrasena" runat="server" class="form-control" placeholder="Contraseña" required>
+        <input type="password" id="Contrasena" runat="server" class="form-control mb-2" placeholder="Contraseña" required>
         <div class="checkbox mb-3">
             <label>
                 <input type="checkbox" value="remember-me" runat="server">
@@ -31,7 +31,7 @@
        
             </label>
         </div>
-        <asp:Button ID="LogInApp" runat="server" CssClass="btn btn-lg btn-primary btn-block" Text="Iniciar Sesion" OnClick="LogInApp_Click" />
+        <asp:Button ID="LogInApp" runat="server" CssClass="btn btn-lg btn-primary btn-block mb-2" Text="Iniciar Sesion" OnClick="LogInApp_Click" />
         <a ID="Registrer" class="btn btn-lg btn-primary btn-block" href="Registrer.aspx" >Registrarse</a>
     </form>
 </body>

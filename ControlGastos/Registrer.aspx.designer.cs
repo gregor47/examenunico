@@ -15,6 +15,15 @@ namespace ExamenUnico
     {
 
         /// <summary>
+        /// Control user.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText user;
+
+        /// <summary>
         /// Control contrasena.
         /// </summary>
         /// <remarks>
@@ -31,15 +40,6 @@ namespace ExamenUnico
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputPassword Password1;
-
-        /// <summary>
-        /// Control user.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText user;
 
         /// <summary>
         /// Control email.
