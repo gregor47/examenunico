@@ -22,7 +22,7 @@ namespace ExamenUnico
 
         protected void LogInApp_Click(object sender, EventArgs e)
         {
-            bool validacion = Validacion(Usuario.Text, Contrasena.Value);
+            bool validacion = Validacion(Usuario.Value, Contrasena.Value);
             if (validacion)
             {
                 //correcto
@@ -31,6 +31,7 @@ namespace ExamenUnico
             else
             {
                 //manda mensaje de usuario invalido
+                Response.Write("Usuario o contraseña Invalida");
             }
         }
         public bool Validacion(String usuario, string contraseña)
@@ -72,6 +73,11 @@ namespace ExamenUnico
             
             return true;
 
+        }
+
+        protected void Registrer_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Registrer.aspx");
         }
     }
 }
