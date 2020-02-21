@@ -65,8 +65,8 @@
        
             </label>
         </div>
-        <button type="submit" class="btn btn-lg btn-primary btn-block" data-toggle="modal" data-target="#exampleModalCenter">
-  Registrarse
+        <button type="button" class="btn btn-lg btn-primary btn-block" data-toggle="modal" data-target="#exampleModalCenter">
+             Registrarse
         </button>
         <p class="mt-5 mb-3 text-muted">Examen Unico© Universidad Autonoma - 2020</p>
     </form>
