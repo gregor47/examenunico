@@ -163,3 +163,5 @@ C:\Users\Gregory\source\repos\examenunico\ControlGastos\obj\Debug\ExamenUnico.cs
 C:\Users\Gregory\source\repos\examenunico\ControlGastos\obj\Debug\ExamenUnico.csproj.CopyComplete
 C:\Users\Gregory\source\repos\examenunico\ControlGastos\obj\Debug\ExamenUnico.dll
 C:\Users\Gregory\source\repos\examenunico\ControlGastos\obj\Debug\ExamenUnico.pdb
+C:\Users\Gregory\source\repos\examenunico\ControlGastos\bin\Newtonsoft.Json.dll
+C:\Users\Gregory\source\repos\examenunico\ControlGastos\bin\Newtonsoft.Json.xml

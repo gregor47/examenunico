@@ -39,33 +39,28 @@ namespace ExamenUnico
             {
                 Response.Redirect("Login.aspx");
             }
-
-            
-            
+        }
+        protected void CerrarSesion(object sender, EventArgs e)
+        {
+            if (Request.Cookies["Sesion"] != null) 
+            { 
+                Response.Cookies["Sesion"].Expires = DateTime.Now.AddDays(-1); 
+            }
+            Response.Redirect("Login.aspx");
         }
         protected void Button3_Click(object sender, EventArgs e)
         {
-            string nombre_servicio = nombre.Value;
-            string coste_servicio = coste.Value;
-            string connString = ConfigurationManager.ConnectionStrings["DataBaseConnection"].ToString();
-            SqlConnection con = new SqlConnection(connString);
-            string sql = "insert into tbl_servicios (Nombre_Servicio,Coste_Servicio,Servicio_User) values ('"+nombre_servicio+"','"+coste_servicio+"',1);";
-            SqlCommand cmd = new SqlCommand();
-            con.Open();
-            cmd.CommandText = sql;
-            cmd.Connection = con;
-            cmd.ExecuteNonQuery();
-            con.Close();
-            nombre.Value = "";
-            coste.Value = "";
             refrescarTabla();
         }
 
         public void refrescarTabla()
         {
             GridView1.DataBind();
-            GridView1.UseAccessibleHeader = true;
-            GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
+            if (GridView1.Rows.Count != 0)
+            {
+                GridView1.UseAccessibleHeader = true;
+                GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
         }
 
         //protected void exportar_Click(object sender, EventArgs e)

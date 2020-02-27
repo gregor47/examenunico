@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -63,6 +64,9 @@ namespace ExamenUnico
                 cookie["UserName"] = user.idusuario;
                 cookie["Nombre"] = user.nombreCompleto;
                 cookie["Perfil"] = user.perfil.ToString();
+                HttpCookie cookie2 = new HttpCookie("idUser");
+                cookie2.Value = user.idusuario;
+                Response.Cookies.Add(cookie2);
                 Response.Cookies.Add(cookie);
             }
             catch (Exception ex)
@@ -78,6 +82,19 @@ namespace ExamenUnico
         protected void Registrer_Click(object sender, EventArgs e)
         {
             Response.Redirect("Registrer.aspx");
+        }
+        [WebMethod]
+        public void CerrarSesion(double Valor1, double Valor2)
+        {
+            for (int i = 0; i < Request.Cookies.Count; i++)
+            {
+                var cookie = new HttpCookie(Request.Cookies[i].Name);
+                cookie.Expires = DateTime.Now.AddDays(-1);
+                cookie.Value = string.Empty;
+                Response.Cookies.Add(cookie);
+            }
+            Session.Abandon();
+            Response.Redirect("Login.aspx");
         }
     }
 }

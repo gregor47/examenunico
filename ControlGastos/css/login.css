@@ -16,6 +16,32 @@ body {
     padding-bottom: 40px;
     background-color: #f5f5f5;
 }
+@font-face {
+    font-family: 'password';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
+}
+
+::-webkit-input-placeholder {
+    font-family: Arial;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    font-family: Arial;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+    font-family: Arial;
+}
+
+:-ms-input-placeholder {
+    font-family: Arial;
+}
+
+input.key {
+    font-family: 'password';
+}
 
 .form-signin {
     width: 100%;

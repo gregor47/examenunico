@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -13,5 +14,31 @@ namespace ExamenUnico
         {
 
         }
-    }
+
+        protected void CerrarSesion()
+        {
+            for (int i = 0; i < Request.Cookies.Count; i++)
+            {
+                var cookie = new HttpCookie(Request.Cookies[i].Name);
+                cookie.Expires = DateTime.Now.AddDays(-1);
+                cookie.Value = string.Empty;
+                Response.Cookies.Add(cookie);
+            }
+            Session.Abandon();
+        }
+        [WebMethod]
+        public void CerrarSesion(double Valor1, double Valor2)
+        {
+            for (int i = 0; i < Request.Cookies.Count; i++)
+            {
+                var cookie = new HttpCookie(Request.Cookies[i].Name);
+                cookie.Expires = DateTime.Now.AddDays(-1);
+                cookie.Value = string.Empty;
+                Response.Cookies.Add(cookie);
+            }
+            Session.Abandon();
+            Response.Redirect("Login.aspx");
+        }
+
+}
 }

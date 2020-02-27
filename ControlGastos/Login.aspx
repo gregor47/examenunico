@@ -15,11 +15,10 @@
     <!-- Custom styles for this template -->
     <link href="css/login.css" rel="stylesheet" />
 </head>
-
 <body class="text-center">
     <form class="form-signin" runat="server">
-        <img class="mb-4 rounded-circle" src="img/LogoApp.png" alt="The Creator" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesion</h1>
+        <img class="mb-4 rounded-circle" src="img/pedidosyalogo.png" alt="The Creator" width="100" height="100">
+        <h1 class="h1 mb-3 font-weight-normal">Iniciar Sesion</h1>
         <label for="inputEmail" class="sr-only">Usuario</label>
         <input type="text" id="Usuario" runat="server" class="form-control mb-2" placeholder="Usuario" required autofocus>
         <label for="inputPassword" class="sr-only">Contraseña</label>

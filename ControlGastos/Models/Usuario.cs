@@ -14,5 +14,8 @@ namespace ExamenUnico.Models
         public bool perfil { get; set; }
         public string nombreCompleto { get; set; }
         public string username { get; set; }
+        public string nombre { get; set; }
+        public string apellido { get; set; }
+        public string contrasena { get; set; }
     }
 }
