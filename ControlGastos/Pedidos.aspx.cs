@@ -59,7 +59,6 @@ namespace ExamenUnico
                         }
                     }
                     refrescarTabla();
-                    llenarcampos();
                 }
             }
             else
@@ -88,8 +87,10 @@ namespace ExamenUnico
         }
         public void llenarcampos()
         {
-            string buscar = "1";
-            string sql = "select stock from productos where id_producto = '" + buscar + "'";
+            string maxi = "20";
+            num_producto.Attributes.Add("max", maxi);
+            int buscar = getpedido();
+            string sql = String.Format("select sum(cantidad) as cantidad from DetallePedido where id_pedido = '{0}' group by id_pedido",buscar);
             string ConnString = ConfigurationManager.ConnectionStrings["DataBaseConnection"].ToString();
             SqlConnection connection = new SqlConnection(ConnString);
             connection.Open();
@@ -97,16 +98,40 @@ namespace ExamenUnico
             cmd.CommandText = sql;
             cmd.Connection = connection;
             SqlDataReader dataReader = cmd.ExecuteReader();
-            DataTable table = new DataTable();
-            table.Load(dataReader);
-            connection.Close();
-            DataRow row = table.Rows[0];
-            stocktxt.Text = row["stock"].ToString().Trim();
-            num_producto.Attributes.Add("max", row["stock"].ToString().Trim());
-            if (row["stock"].ToString().Equals("0"))
+            DataRow row;
+            if (dataReader.HasRows)
             {
-                num_producto.Attributes.Add("min", "0");
+                DataTable table = new DataTable();
+                table.Load(dataReader);
+                
+                row = table.Rows[0];
+                string max = (20 - Convert.ToInt32(row["cantidad"].ToString().Trim())).ToString();
+                num_producto.Attributes.Add("max", max);
             }
+            else
+            {
+                string max = "20";
+                num_producto.Attributes.Add("max", max);
+            }
+            dataReader.Close();
+            //num_producto.Attributes.Add("max", row["stock"].ToString().Trim());
+
+
+            sql = String.Format("select stock from productos where id_producto = '{0}'", 1);
+            
+            cmd.CommandText = sql;
+            SqlDataReader dataReader2 = cmd.ExecuteReader();
+            DataTable table2 = new DataTable();
+            table2.Load(dataReader2);
+            dataReader2.Close();
+            DataRow row2 = table2.Rows[0];
+            stocktxt.Text = row2["stock"].ToString().Trim();
+            connection.Close();
+
+            //if (row2["cantidad"].ToString().Equals("20"))
+            //{
+            //    num_producto.Attributes.Add("min", "0");
+            //}
         }
 
         protected void AgregarProductos(object sender, EventArgs e)
@@ -194,7 +219,29 @@ namespace ExamenUnico
             }
             return respuesta;
         }
+        protected void RealizarPedido(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                string buscar = getpedido().ToString();
+                string sql = "update pedidos set estado = 1 where id_pedido = '" + buscar + "'";
+                string ConnString = ConfigurationManager.ConnectionStrings["DataBaseConnection"].ToString();
+                SqlConnection connection = new SqlConnection(ConnString);
+                connection.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = sql;
+                cmd.Connection = connection;
+                cmd.ExecuteNonQuery();
+                connection.Close();
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+            Response.Redirect("Default.aspx");
+        }
         protected void DropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -213,7 +260,7 @@ namespace ExamenUnico
                 connection.Close();
                 DataRow row = table.Rows[0];
                 stocktxt.Text = row["stock"].ToString().Trim();
-                num_producto.Attributes.Add("max", row["stock"].ToString().Trim());
+                //num_producto.Attributes.Add("max", row["stock"].ToString().Trim());
             }
             catch (Exception ex)
             {

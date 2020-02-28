@@ -28,8 +28,9 @@
             <span class="input-group-text">Stock</span>
             <asp:TextBox ID="stocktxt" Enabled="false" runat="server"></asp:TextBox>
             <span class="input-group-text">Cantidad </span>
-            <input type="number" id="num_producto" runat="server" class="form-control" placeholder="Cantidad" required min="1" />
+            <input type="number" id="num_producto" runat="server" class="form-control" placeholder="Cantidad" required min="0" />
             <asp:Button runat="server" ID="btnAgregar" Text="Agregar" CssClass="btn btn-success" OnClick="AgregarProductos" />
+            <asp:Button runat="server" ID="Button1" Text="RealizarPedido" CssClass="btn btn-primary" OnClick="RealizarPedido" />
             <%--<asp:Button ID="Button3" runat="server" CssClass="btn btn-success" Text="Agregar" OnClick="Button3_Click" />--%>
             
             
