@@ -11,7 +11,7 @@ namespace ExamenUnico
 {
 
 
-    public partial class Site1
+    public partial class Site2
     {
 
         /// <summary>

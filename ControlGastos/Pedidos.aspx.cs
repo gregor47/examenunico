@@ -115,7 +115,7 @@ namespace ExamenUnico
             }
             dataReader.Close();
             //num_producto.Attributes.Add("max", row["stock"].ToString().Trim());
-
+            DescripcionPedido.Value = buscar.ToString();
 
             sql = String.Format("select stock from productos where id_producto = '{0}'", 1);
             
@@ -223,9 +223,9 @@ namespace ExamenUnico
         {
             try
             {
-                
+                string descripcion = DescripcionPedido.Value;
                 string buscar = getpedido().ToString();
-                string sql = "update pedidos set estado = 1 where id_pedido = '" + buscar + "'";
+                string sql = "update pedidos set estado = 1,descripcion = '"+descripcion+"' where id_pedido = '" + buscar + "'";
                 string ConnString = ConfigurationManager.ConnectionStrings["DataBaseConnection"].ToString();
                 SqlConnection connection = new SqlConnection(ConnString);
                 connection.Open();
@@ -264,10 +264,8 @@ namespace ExamenUnico
             }
             catch (Exception ex)
             {
-
                 throw;
             }
-            
         }
 
         //public void RegistrarPedido(object sender, EventArgs e)

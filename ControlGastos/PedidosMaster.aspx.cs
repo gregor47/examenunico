@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,12 +9,12 @@ using System.Web.UI.WebControls;
 
 namespace ExamenUnico
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class PedidosMaster : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             refrescarTabla();
-            String username ="", perfil, nombre;
+            String username = "", perfil, nombre;
             try
             {
                 username = Request.Cookies["Sesion"].Values.Get("UserName");
@@ -41,21 +39,15 @@ namespace ExamenUnico
                 Response.Redirect("Login.aspx");
             }
         }
-        protected void CerrarSesion(object sender, EventArgs e)
-        {
-            if (Request.Cookies["Sesion"] != null) 
-            { 
-                Response.Cookies["Sesion"].Expires = DateTime.Now.AddDays(-1); 
-            }
-            Response.Redirect("Login.aspx");
-        }
+
         protected void Button3_Click(object sender, EventArgs e)
         {
-            string nombre = nombOrden.Value;
+            string montoTar = monto.Value;
+            string Tarjeta = numTarjeta.Value;
             string iduser = Request.Cookies["IdUser"].Value;
             try
             {
-                string sql = "insert into pedidosmaster (descripcion,id_user) values ('"+nombre+"','"+iduser+"')";
+                string sql = "insert into cuentas (tarjeta,id_usuario,disponible) values ('" + Tarjeta + "','" + iduser + "', '"+montoTar+"')";
                 string ConnString = ConfigurationManager.ConnectionStrings["DataBaseConnection"].ToString();
                 SqlConnection connection = new SqlConnection(ConnString);
                 connection.Open();
@@ -65,7 +57,9 @@ namespace ExamenUnico
                 cmd.ExecuteNonQuery();
                 refrescarTabla();
                 dropdescripcion.DataBind();
-                nombOrden.Value = "";
+                monto.Value = "";
+                numTarjeta.Value = "";
+                dropdescripcion.DataBind();
             }
             catch (Exception)
             {
@@ -84,14 +78,22 @@ namespace ExamenUnico
             }
         }
 
+        protected void CerrarSesion(object sender, EventArgs e)
+        {
+            if (Request.Cookies["Sesion"] != null)
+            {
+                Response.Cookies["Sesion"].Expires = DateTime.Now.AddDays(-1);
+            }
+            Response.Redirect("Login.aspx");
+        }
+
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string card = dropdescripcion.SelectedValue;
             string id = GridView1.Rows[GridView1.SelectedIndex].Cells[0].Text.ToString();
-            string drop = dropdescripcion.SelectedValue;
             try
             {
-                if (!String.IsNullOrEmpty(drop)) { 
-                string sql = "update pedidos set estado=null where id_pedido='"+id+"'";
+                string sql = String.Format("update PedidosMaster set id_pedido = '{0}',estado=1,cobrado_descriptcion='En Espera' where id_gestion = '{1}'", card,id);
                 string ConnString = ConfigurationManager.ConnectionStrings["DataBaseConnection"].ToString();
                 SqlConnection connection = new SqlConnection(ConnString);
                 connection.Open();
@@ -99,15 +101,10 @@ namespace ExamenUnico
                 cmd.CommandText = sql;
                 cmd.Connection = connection;
                 cmd.ExecuteNonQuery();
-                sql = "update pedidosmaster set estado=0 where id_gestion='"+drop+"'";
-                cmd.CommandText = sql;
-                cmd.ExecuteNonQuery();
-                sql = "update DetallePedido set master = '"+drop+"' where id_pedido = '"+id+"'";
-                cmd.CommandText = sql;
-                cmd.ExecuteNonQuery();
-                connection.Close();
                 refrescarTabla();
-                }
+                monto.Value = "";
+                numTarjeta.Value = "";
+                dropdescripcion.DataBind();
             }
             catch (Exception)
             {

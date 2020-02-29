@@ -27,7 +27,16 @@ namespace ExamenUnico
             if (validacion)
             {
                 //correcto
-                Response.Redirect("Default.aspx");
+                bool perf = bool.Parse(Request.Cookies["Sesion"].Values.Get("Perfil"));
+                if (perf)
+                {
+                    Response.Redirect("AgregarProductos.aspx");
+                }
+                else
+                {
+                    Response.Redirect("Default.aspx");
+                }
+                
             }
             else
             {
@@ -58,7 +67,7 @@ namespace ExamenUnico
                 user.direccion = row["direccion"].ToString().Trim();
                 user.username = row["username"].ToString().Trim();
                 user.nombreCompleto = row["nombre"].ToString().Trim() + " " + row["apellido"].ToString().Trim();
-                user.perfil = row["perfil"].ToString() == "True";
+                user.perfil = bool.Parse(row["perfil"].ToString());
 
                 HttpCookie cookie = new HttpCookie("Sesion");
                 cookie["UserName"] = user.idusuario;

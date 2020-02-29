@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="ExamenUnico.Site1" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site2.master.cs" Inherits="ExamenUnico.Site2" %>
 
 <!DOCTYPE html>
 
@@ -36,16 +36,10 @@
                 </li>
                 <hr />
                 <li>
-                    <a href="Default.aspx"><i class="fas fa-plus"></i>  Nueva Orden</a>
+                    <a href="AgregarProductos.aspx"><i class="fas fa-plus"></i>  Agregar Productos</a>
                 </li>
                 <li>
-                    <a href="Pedidos.aspx"><i class="fas fa-plus"></i>  Nuevo Pedido</a>
-                </li>
-                <li>
-                    <a href="PedidosMaster.aspx"><i class="fas fa-cart-plus"></i>  Ordenar Pedidos</a>
-                </li>
-                <li>
-                    <a href="EstadoOrden.aspx"><i class="fas fa-luggage-cart"></i> Estado Orden</a>
+                    <a href="CobroPedidos.aspx"><i class="fas fa-plus"></i>  Cobrar Pedidos</a>
                 </li>
             </ul>
         </div>

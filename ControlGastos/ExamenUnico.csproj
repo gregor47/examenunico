@@ -70,21 +70,46 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AgregarProductos.aspx" />
+    <Content Include="CobroPedidos.aspx" />
     <Content Include="css\all.css" />
     <Content Include="css\all.js" />
     <Content Include="css\login.css" />
     <Content Include="css\StyleMaster.css" />
+    <Content Include="EstadoOrden.aspx" />
     <Content Include="Global.asax" />
     <Content Include="img\angiestore.jpg" />
     <Content Include="img\LogoApp.png" />
     <Content Include="img\pedidosyalogo.png" />
     <Content Include="Login.aspx" />
     <Content Include="Pedidos.aspx" />
+    <Content Include="PedidosMaster.aspx" />
     <Content Include="Registrer.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarProductos.aspx.cs">
+      <DependentUpon>AgregarProductos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarProductos.aspx.designer.cs">
+      <DependentUpon>AgregarProductos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CobroPedidos.aspx.cs">
+      <DependentUpon>CobroPedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CobroPedidos.aspx.designer.cs">
+      <DependentUpon>CobroPedidos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EstadoOrden.aspx.cs">
+      <DependentUpon>EstadoOrden.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EstadoOrden.aspx.designer.cs">
+      <DependentUpon>EstadoOrden.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -95,6 +120,8 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\CobroModel.cs" />
+    <Compile Include="Models\Cuentas.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Pedidos.aspx.cs">
       <DependentUpon>Pedidos.aspx</DependentUpon>
@@ -102,6 +129,13 @@
     </Compile>
     <Compile Include="Pedidos.aspx.designer.cs">
       <DependentUpon>Pedidos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PedidosMaster.aspx.cs">
+      <DependentUpon>PedidosMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PedidosMaster.aspx.designer.cs">
+      <DependentUpon>PedidosMaster.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registrer.aspx.cs">
@@ -125,10 +159,18 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Site2.Master.cs">
+      <DependentUpon>Site2.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site2.Master.designer.cs">
+      <DependentUpon>Site2.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Site1.Master" />
+    <Content Include="Site2.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

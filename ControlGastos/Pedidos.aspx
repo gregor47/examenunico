@@ -13,13 +13,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/TableExport/5.2.0/js/tableexport.js"></script>
     
     <h2>Nuevo Pedido</h2>
-    <asp:Button runat="server" CssClass="btn btn-danger" Text="Cerrar Sesion" OnClick="CerrarSesion"/>
+    <asp:Button runat="server" CssClass="btn btn-danger" Text="Cerrar Sesion" OnClick="CerrarSesion" CausesValidation="false" UseSubmitBehavior="false"/>
     <hr />
     <h5>Agregar Productos</h5>
     <h6>Id Pedido: <asp:Label id="idpedidomostrar" Text="0" runat="server"/></h6>
-    <br />
-
-    <div class="input-group mb-3">
+    <br/>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="input-group mb-3">
         <div class="input-group-prepend">
             <span class="input-group-text">Producto </span>
             <asp:DropDownList OnSelectedIndexChanged="DropDownList_SelectedIndexChanged" ID="DropDownList" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource2" DataTextField="nombre" DataValueField="id_producto" CssClass="form-control">
@@ -30,13 +31,25 @@
             <span class="input-group-text">Cantidad </span>
             <input type="number" id="num_producto" runat="server" class="form-control" placeholder="Cantidad" required min="0" />
             <asp:Button runat="server" ID="btnAgregar" Text="Agregar" CssClass="btn btn-success" OnClick="AgregarProductos" />
-            <asp:Button runat="server" ID="Button1" Text="RealizarPedido" CssClass="btn btn-primary" OnClick="RealizarPedido" />
-            <%--<asp:Button ID="Button3" runat="server" CssClass="btn btn-success" Text="Agregar" OnClick="Button3_Click" />--%>
-            
-            
+            </div>
+    </div>
         </div>
     </div>
     
+    <div class="row">
+        <div class="col-md-12">
+            <div class="input-group mb-2">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Descripcion Pedido</span>
+            <input type="text" class="form-control" placeholder="Descripcion Pedido" id="DescripcionPedido" required runat="server" />
+            <asp:Button runat="server" ID="Button1" Text="RealizarPedido" CssClass="btn btn-primary" OnClick="RealizarPedido" ValidationGroup="pedi" CausesValidation="true" />
+            <%--<asp:Button ID="Button3" runat="server" CssClass="btn btn-success" Text="Agregar" OnClick="Button3_Click" />--%>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" CssClass="table table-striped table-bordered table-hover">
         <Columns>
             <asp:BoundField DataField="id_producto" HeaderText="id_producto" SortExpression="id_producto" />

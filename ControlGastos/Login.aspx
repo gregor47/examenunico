@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Signin Template for Bootstrap</title>
+    <title>Login Examen Unico</title>
 
     <!-- Bootstrap core CSS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

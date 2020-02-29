@@ -15,16 +15,13 @@ namespace ExamenUnico
 
         }
 
-        protected void CerrarSesion()
+        protected void CerrarSesion(object sender, EventArgs e)
         {
-            for (int i = 0; i < Request.Cookies.Count; i++)
+            if (Request.Cookies["Sesion"] != null)
             {
-                var cookie = new HttpCookie(Request.Cookies[i].Name);
-                cookie.Expires = DateTime.Now.AddDays(-1);
-                cookie.Value = string.Empty;
-                Response.Cookies.Add(cookie);
+                Response.Cookies["Sesion"].Expires = DateTime.Now.AddDays(-1);
             }
-            Session.Abandon();
+            Response.Redirect("Login.aspx");
         }
         [WebMethod]
         public void CerrarSesion(double Valor1, double Valor2)
